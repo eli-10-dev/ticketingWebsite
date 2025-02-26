@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body>
+
+        <div class="container">
+
+            <!-- TASK FORM 
+            Will only appear when a task is being created / updated.
+            -->
+            <div class="task-form hidden" id="task-form">
+                <div class="task-form-title"> TICKETING SYSTEM DASHBOARD <button id="close-task-form" class="close-task-form"></button></div>
+                
+                <label class="task-form-label">Create a ticket</label>
+                <input required type="text" id="ticketTitle" value="" placeholder="Ticket title">
+
+                <label class="task-form-label">Description</label>
+                <textarea id="ticketDescription" value="" placeholder="Write a ticket description"></textarea>
+
+                <div class="task-form-dropdown">
+                    <label for="task-form-ticketStatus dropdown-label" class="dropdown-label">Ticket Status</label>
+                    <select class="task-form-ticketStatus" id="task-form-ticketStatus">
+                        <option value="Backlog">Backlog</option>
+                        <option value="In-Progress">In Progress</option>
+                        <option value="Acknowledged">Acknowledged</option>
+                        <option value="Completed">Completed</option>
+                    </select>
+                </div>
+
+                <div class="task-form-dropdown">
+                    <label for="task-form-ticketCreator" class="dropdown-label">Ticket Creator</label>
+                    <select class="task-form-ticketCreator dropdownText" id="task-form-ticketCreator">
+                        <option>Juan</option>
+                        <option>Andres</option>
+                    </select>
+                </div>
+
+                <div class="task-form-dropdown">
+                    <label for="task-form-date" class="dropdown-label">Date</label>
+                    <input type="date" id="task-form-date">
+                </div>
+
+                <div class="task-form-dropdown">
+                    <label for="task-form-concern" class="dropdown-label">Concern </label>
+                    <select class="task-form-concern dropdownText" id="task-form-concern">
+                        <option>Client-side</option>
+                        <option>Admin</option>
+                    </select>
+                </div>
+
+                <button id="create-task" class="create-task">Create Task</button>
+            </div> <!-- end of task-form-->
+
+
+
+            <!-- START OF THE MAIN DISPLAY -->
+            <div class="header">
+                <div class="header1">
+                    <p>Tickets</p>
+                    <p>Board</p>
+                    <p>Feed</p>
+                    <p>Reports</p>
+                </div>
+
+                <div class="header2">
+                    <p>Client Success Team</p>
+                </div>
+            </div>
+
+            <main>
+                <div class="buttonsContainer">
+                    <input id="filterTickets" type="text" placeholder="Search Items"/>
+                    <section class="buttonGroup">
+                        <button id="open-task-form">Create Ticket</button>
+                        <button id="filter-ticket">Filter</button>
+                        <button id="analytics">Analytics</button>
+                    </section>
+                </div>
+                
+                <div class="ticketsContainer">
+                    <div class="ticketSection backlogs">
+                        <div class="ticketCategory">Backlogs</div>
+                        <div class="ticketCell" id="ticket-backlogs"></div>
+                    </div>
+
+                    <div class="ticketSection inProgress">
+                        <div class="ticketCategory">In Progress</div>
+                        <div class="ticketCell" id="ticket-inProgress"></div>
+                    </div>
+
+                    <div class="ticketSection acknowledged">
+                        <div class="ticketCategory">Acknowledged</div>
+                        <div class="ticketCell" id="ticket-acknowledged"></div>
+                    </div>
+
+                    <div class="ticketSection completed">
+                        <div class="ticketCategory">Completed</div>
+                        <div class="ticketCell" id="ticket-completed"></div>
+                    </div>
+                </div>
+            </main>
+
+        </div> <!-- end of container div -->
+
+        <script src="index.js" async defer></script>
+
+    </body>
+</html>

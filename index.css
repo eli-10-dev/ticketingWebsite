@@ -1,0 +1,223 @@
+:root{
+    --button-color: blue;
+    --text-color1: white;
+    --text-color2: black;
+    --color1: #000000;
+    --color2: #4f4e4e;
+}   
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* TASK FORM */
+.task-form{
+    background-color: darkblue;
+    height: 600px;
+    width: 500px;
+    padding: 1.5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 1em;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    border-radius: 1em;
+}
+
+.hidden{
+    display: none;
+}
+
+.task-form .hidden{
+    z-index: -1;
+}
+
+
+.task-form-title{
+    padding-bottom: 1em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.task-form-label, .task-form input:not(#task-form-date){
+    width: 100%;
+}
+
+#ticketDescription{
+    resize: none;
+    padding: 1em 1em 8em 1em;
+}
+
+.task-form-dropdown{
+    color:  var(--text-color1);
+    width: 100%;
+    display: flex;
+    /* border: 5px solid black; */
+}
+
+.task-form-dropdown select, #task-form-date{
+    width: 25em;
+    margin-left: auto;
+}
+
+.close-task-form{
+    height: 1.5em;
+    width: 1.5em;
+    border-radius: 5em;
+    position: relative;
+    left: 90px;
+    background-color: red;
+}
+
+.create-task{
+    padding: 0.2em;
+    margin-top: 4em;
+}
+
+/* =================== BODY =================== */
+body, .container{
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.container{
+    display: flex;
+    flex-direction: column; 
+}
+
+.container, .buttonsContainer button, .buttonsContainer input{
+    color: var(--text-color1);
+}
+
+.header{
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header1{
+    flex: 1;
+    background-color: var(--color1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+}
+
+.header2{
+    flex: 1;
+    background-color: #7b7a7a;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5em 0 0.5em 2em;
+}
+
+main{
+    flex: 5;
+    background-color: var(--color2);
+
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonsContainer{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 1em 2em;
+}
+
+.buttonsContainer input{
+    margin-right: auto;
+    padding-left: 1em;
+    background-color: var(--color2);
+    border-radius: 0.2em;
+    border: 1px solid white;
+    height: 2em;
+}
+
+.buttonsContainer input::placeholder{
+    color: var(--text-color);
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 0.1em;
+}
+
+.buttonGroup button{
+    background-color: var(--button-color);
+    padding: 2px;
+    width: 8em;
+    height: 2em;
+    border-radius: 0.5em;
+}
+
+.ticketsContainer{
+    /* border: 10px solid black; */
+    flex: 20;
+    min-height: 400px;
+
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    padding: 0 2em 1em 2em;
+}
+
+.ticketSection{
+    /* border: 1px solid white;  */
+    flex: 1;
+    height: 500px;
+
+    display: flex;
+    flex-direction: column;
+    border-radius: 1em;
+}
+
+main .ticketCategory{
+    /* background-color: blue;  */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 1em 1em 0 0;
+}
+
+.ticketCell{
+    background-color: #595757a4;
+    border-radius: 1em;
+    margin-top: 1em;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(31, 31, 31) var(--color2);
+}
+
+
+.tasks{
+    background-color: var(--color1);
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 1em;
+    margin: 0.3em;
+    padding: 1em;
+    gap: 0.2em;
+}
