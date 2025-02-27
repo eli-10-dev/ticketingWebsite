@@ -58,8 +58,6 @@
                 <button id="create-task" class="create-task">Create Task</button>
             </div> <!-- end of task-form-->
 
-
-
             <!-- START OF THE MAIN DISPLAY -->
             <div class="header">
                 <div class="header1">
@@ -74,12 +72,13 @@
                 </div>
             </div>
 
+            <!-- Display section of the tickets-->
             <main>
                 <div class="buttonsContainer">
-                    <input id="filterTickets" type="text" placeholder="Search Items"/>
+                    <input id="search-bar" type="text" placeholder="Search Items"/>
                     <section class="buttonGroup">
+                        <button onclick=filterTicketSections(this) id="filter-ticket">Filter</button>
                         <button id="open-task-form">Create Ticket</button>
-                        <button id="filter-ticket">Filter</button>
                         <button id="analytics">Analytics</button>
                     </section>
                 </div>

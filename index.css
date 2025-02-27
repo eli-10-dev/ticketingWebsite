@@ -145,8 +145,8 @@ main{
 }
 
 .buttonsContainer input{
-    margin-right: auto;
-    padding-left: 1em;
+    padding: 1em;
+    margin-right: 0.5em;
     background-color: var(--color2);
     border-radius: 0.2em;
     border: 1px solid white;
@@ -159,15 +159,29 @@ main{
 
 .buttonGroup {
     display: flex;
+    width: 100%;
     gap: 0.1em;
 }
 
 .buttonGroup button{
     background-color: var(--button-color);
-    padding: 2px;
+    padding: 5px;
     width: 8em;
-    height: 2em;
+    height: 2.4em;
     border-radius: 0.5em;
+}
+
+.buttonGroup #filter-ticket{
+    margin-right: auto;
+    background-color: var(--color2);
+    color: white;
+    border: 1px solid white;
+}
+
+#filter-ticket:active{
+    background-color: white;
+    color: black;
+    border: 2px solid black;
 }
 
 .ticketsContainer{

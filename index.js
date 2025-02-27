@@ -7,6 +7,7 @@ const ticketStatusContainer = document.getElementById("task-form-ticketStatus");
 const ticketCreatorContainer = document.getElementById("task-form-ticketCreator");
 const ticketDateContainer = document.getElementById("task-form-date");
 const ticketConcernContainer = document.getElementById("task-form-concern");
+const searchBarInput = document.getElementById("search-bar");
 
 // Ticket display container
 const ticketDisplayBacklogs = document.getElementById("ticket-backlogs");
@@ -57,7 +58,7 @@ const addOrUpdateTicket = () => {
 
     const currentTaskIndex = ticketsArr.findIndex((ticket) => ticket.id === currentTask.id)
     const ticketObj = {
-         id: currentTask.id || `ID-${String(ticketCounter).padStart(4, "0")}`,//`ID-${zeros}${ticketCounter}`, `id-${Date.now()}`,
+         id: currentTask.id || `ID-${String(ticketCounter).padStart(4, "0")}`,//`ID-${zeros}${ticketCounter}`,
         title: ticketTitleContainer.value,
         description: ticketDescriptionContainer.value,
         status: ticketStatusContainer.value,
@@ -67,6 +68,8 @@ const addOrUpdateTicket = () => {
     };
     
     ticketCounter++;
+    // CONSOLE.LOG TESTING
+    console.log("Tickets:", ticketsArr);
 
     if (currentTaskIndex === -1){
         ticketsArr.unshift(ticketObj);
@@ -76,7 +79,6 @@ const addOrUpdateTicket = () => {
 
     updateTicketSections();
     taskForm.classList.add("hidden");
-    console.log(ticketsArr.length);
 };
 
 const updateTicketSections = () => {
@@ -98,10 +100,11 @@ const updateTicketSections = () => {
             } else if (status === "Completed"){
                 display = ticketDisplayCompleted;
             } else {
-                alert("No stauts was set!");
+                alert("No status was set!");
             }
 
-            console.log("Status: ", status);
+            
+            // console.log("Status: ", status);
 
             (display.innerHTML += `
             <div class="tasks" id="${id}">
@@ -120,6 +123,52 @@ const updateTicketSections = () => {
     )
 };
 
+const filterTicketSections = () => {
+    const filteredTickets = ticketsArr.filter(ticket => 
+        ticket.title.toLowerCase().includes(searchBarInput.value.toLowerCase()) || 
+        ticket.id.toLowerCase() === searchBarInput.value.toLowerCase()
+    );
+
+    ticketDisplayBacklogs.innerHTML = "";
+    ticketDisplayInProgress.innerHTML = "";
+    ticketDisplayAcknowledged.innerHTML = "";
+    ticketDisplayCompleted.innerHTML = "";
+
+    filteredTickets.forEach(
+        ({ id, title, description, status, creator, date, concern }) => {
+        let display;
+
+        if (status === "Backlog") {
+            display = ticketDisplayBacklogs;
+        } else if (status === "In-Progress") {
+            display = ticketDisplayInProgress;
+        } else if (status === "Acknowledged") {
+            display = ticketDisplayAcknowledged;
+        } else if (status === "Completed") {
+            display = ticketDisplayCompleted;
+        } else {
+            alert("No status was set!");
+            return;
+        }
+
+        display.innerHTML += `
+            <div class="tasks" id="${id}">
+                <p>Ticket Id: ${id}</p>
+                <p>Title: ${title}</p>
+                <p>Description: ${description}</p>
+                <p>Status: ${status}</p>
+                <p>Creator: ${creator}</p>
+                <p>Date: ${date}</p>
+                <p>Concern: ${concern}</p>
+                <button onclick=editTicket(this) id="edit-task-form">Edit</button>
+                <button onclick=deleteTicket(this) id="delete-task-form">Delete</button>
+            </div>    
+        `;
+    });
+};
+
+
+// FUNCTIONS BELOW ARE FOR THE TASK FORM
 const editTicket = (Button) => {
     const currentTaskIndex = ticketsArr.findIndex((ticket) => ticket.id === Button.parentElement.id)
 
@@ -174,3 +223,6 @@ closeFormBtn.addEventListener("click", () => {
 createTaskBtn.addEventListener("click", () =>{
     addOrUpdateTicket();
 });
+
+
+
