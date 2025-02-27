@@ -67,12 +67,12 @@ const addOrUpdateTicket = () => {
         concern: ticketConcernContainer.value 
     };
     
-    ticketCounter++;
     // CONSOLE.LOG TESTING
     console.log("Tickets:", ticketsArr);
 
     if (currentTaskIndex === -1){
         ticketsArr.unshift(ticketObj);
+        ticketCounter++;
     } else{
         ticketsArr[currentTaskIndex] = ticketObj;
     }
@@ -129,6 +129,12 @@ const filterTicketSections = () => {
         ticket.id.toLowerCase() === searchBarInput.value.toLowerCase()
     );
 
+    if (searchBarInput.value === "") {
+        updateTicketSections();
+        console.log("TicketsArr after '' filter:", ticketsArr);
+        return;
+    }
+
     ticketDisplayBacklogs.innerHTML = "";
     ticketDisplayInProgress.innerHTML = "";
     ticketDisplayAcknowledged.innerHTML = "";
@@ -165,6 +171,8 @@ const filterTicketSections = () => {
             </div>    
         `;
     });
+
+    console.log("Filtered Tickets: ", filteredTickets);
 };
 
 
