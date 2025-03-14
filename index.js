@@ -58,7 +58,7 @@ const addOrUpdateTicket = () => {
 
     const currentTaskIndex = ticketsArr.findIndex((ticket) => ticket.id === currentTask.id)
     const ticketObj = {
-         id: currentTask.id || `ID-${String(ticketCounter).padStart(4, "0")}`,//`ID-${zeros}${ticketCounter}`,
+        id: currentTask.id || `ID-${String(ticketCounter).padStart(4, "0")}`,//`ID-${zeros}${ticketCounter}`,
         title: ticketTitleContainer.value,
         description: ticketDescriptionContainer.value,
         status: ticketStatusContainer.value,
@@ -182,13 +182,6 @@ const editTicket = (Button) => {
 
     currentTask = ticketsArr[currentTaskIndex];
 
-    // id: `id-${Date.now()}`,
-    // title: ticketTitleContainer.value,
-    // description: ticketDescriptionContainer.value,
-    // status: ticketStatusContainer.value,
-    // creator: ticketCreatorContainer.value,
-    // date: ticketDateContainer.value,
-    // concern: ticketConcernContainer.value 
     ticketTitleContainer.value = currentTask.title
     ticketDescriptionContainer.value = currentTask.description
     ticketStatusContainer.value = currentTask.status
